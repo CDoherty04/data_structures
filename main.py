@@ -1,23 +1,15 @@
-import time
-from queue import Queue
+import functions
 
 if __name__ == "__main__":
+    # Place function calls here
+    print(functions.is_balanced("()"))  # True
+    print(functions.is_balanced("("))  # False
+    print(functions.is_balanced(")"))  # False
+    print(functions.is_balanced("(()"))  # False
+    print(functions.is_balanced("(())"))  # True
+    print(functions.is_balanced(")(()"))  # False
+    print(functions.is_balanced("(()())"))  # True
 
-    start_time = time.time()
-
-    my_queue = Queue()
-
-    # How many items will be added and removed from the queue
-    iterations = 99999
-
-    for i in range(iterations):
-        my_queue.enqueue(i+1)
-
-    for i in range(iterations):
-        my_queue.dequeue()
-
-    # Calculate time spent running the program
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-
-    print(elapsed_time)
+    print(functions.queue_time_test(1000))  # A split-second
+    print(functions.queue_time_test(10000))  # About a second
+    print(functions.queue_time_test(100000))  # A long ass time
