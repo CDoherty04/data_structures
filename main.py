@@ -12,4 +12,4 @@ if __name__ == "__main__":
 
     print(functions.queue_time_test(1000))  # A split-second
     print(functions.queue_time_test(10000))  # About a second
-    print(functions.queue_time_test(100000))  # A long ass time
+    # print(functions.queue_time_test(100000))  # A long ass time

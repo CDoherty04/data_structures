@@ -15,18 +15,16 @@ def is_balanced(parentheses):
         if parenthesis == "(":
             the_stack.push(parenthesis)
 
-        # If the parenthesis is closed and there's an unpaired parenthesis, pair it
-        elif the_stack.peek() == "(":
-            the_stack.pop()
-
-        # If there's an extra closing parenthesis, return False
-        else:
+        # The parenthesis is closed and there's no unpaired parenthesis
+        elif the_stack.is_empty():
             return False
 
+        # If the parenthesis is closed and there's an unpaired parenthesis, pair it
+        else:
+            the_stack.pop()
+
     # Ensure there's no extra opening parenthesis
-    if the_stack.is_empty():
-        return True
-    return False
+    return the_stack.is_empty()
 
 
 def queue_time_test(iterations):
