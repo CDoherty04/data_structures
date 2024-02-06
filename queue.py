@@ -4,7 +4,7 @@ from node import Node
 class Queue:
 
     def __init__(self):
-        self._front = self._rear = None
+        self._front = self._back = None
 
     def enqueue(self, entry):
         """Add to the back"""
@@ -13,33 +13,35 @@ class Queue:
 
         if self.is_empty():
             self._front = node
-            self._rear = node
+            self._back = node
 
-        # Only one item in queue
-        elif self._front == self._rear:
-            self._rear = node
-            self._rear.next = self._front
+        elif self._back is self._front:
+            self._back = node
+            self._front.next = self._back
 
-        # Multiple items in queue
         else:
-            temp = self._rear
-            self._rear = node
-            self._rear.next = temp
+            temp = self._back
+            self._back = node
+            temp.next = self._back
 
     def dequeue(self):
         """Remove the front"""
 
-        # One or no items in the queue
-        if self._front == self._rear:
-            self._front = self._rear = None
+        # No items in the queue
+        if self.is_empty():
+            raise RuntimeError("Queue already empty")
+
+        # One item in queue, make sure to set back to None
+        elif self._back is self._front:
+            temp = self._front
+            self._front = self._back = None
+            return temp
 
         # Multiple items in queue
         else:
-            # Use a placeholder node to replace the front
-            temp = self._rear
-            while temp.next is not self._front:
-                temp = temp.next
-            self._front = temp
+            temp = self._front
+            self._front = self._front.next
+            return temp
 
     def peek_front(self):
         """Look at the front node"""
