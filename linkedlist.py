@@ -53,6 +53,6 @@ class LinkedList:
             jumper = self._front
             for i in range(index):
                 jumper = jumper.next
-            return jumper.get_value()
+            return jumper.value
         else:
             raise IndexError()
