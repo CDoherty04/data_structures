@@ -4,5 +4,5 @@ class Node:
         self.value = entry
         self.next = None
 
-    def get_entry(self):
+    def get_value(self):
         return self.value
