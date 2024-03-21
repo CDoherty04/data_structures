@@ -31,4 +31,17 @@ class BST:
                 self._rec_add(new_node, cur_node.right)
 
         else:
-            raise RuntimeError("No duplicates allowed within a Binary Search Tree")
+            raise ValueError("No duplicates allowed within a Binary Search Tree")
+
+    def search(self, key):
+        return self._rec_search(key, self._root)
+
+    def _rec_search(self, key, cur_node):
+        if cur_node.entry == key:
+            return cur_node.entry
+        elif cur_node.entry < key:
+            self._rec_search(key, cur_node.left)
+        elif cur_node.entry > key:
+            self._rec_search(key, cur_node.right)
+        else:
+            raise KeyError("Something went wrong")
